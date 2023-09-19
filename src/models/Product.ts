@@ -1,10 +1,13 @@
 export interface ProductItem {
 	id: string;
-	category: string;
-	name: string;
+	title: string;
 	price: number;
-	coverImage: {
-		src: string;
-		alt: string;
+	description: string;
+	category: string;
+	rating: {
+		rate: number;
+		count: number;
 	};
+	image: string;
+	longDescription: string;
 }

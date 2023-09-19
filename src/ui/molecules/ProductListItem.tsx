@@ -1,3 +1,4 @@
+import { ActiveLink } from "../atoms/ActiveLink";
 import { ProductCoverImage } from "../atoms/ProductCoverImage";
 import { ProductListItemDescription } from "../atoms/ProductListItemDescription";
 import { type ProductItem } from "@/models/Product";
@@ -9,14 +10,16 @@ interface ProductListItemProps {
 export const ProductListItem = ({ product }: ProductListItemProps) => {
 	return (
 		<li>
-			<article className="flex flex-col gap-2">
-				<ProductCoverImage src={product.coverImage.src} alt={product.coverImage.alt} />
-				<ProductListItemDescription
-					name={product.name}
-					category={product.category}
-					price={product.price}
-				/>
-			</article>
+			<ActiveLink href={`/product/${product.id}`}>
+				<article className="flex flex-col gap-2">
+					<ProductCoverImage src={product.image} alt={product.title} />
+					<ProductListItemDescription
+						name={product.title}
+						category={product.category}
+						price={product.price}
+					/>
+				</article>
+			</ActiveLink>
 		</li>
 	);
 };
