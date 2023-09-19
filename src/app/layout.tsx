@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 						</li>
 						<li>
 							<ActiveLink
-								href="/products"
+								href={"/products/1"}
 								className="text-blue-400 hover:text-blue-600"
 								activeClassName="border-b-2 border-blue-400"
 							>

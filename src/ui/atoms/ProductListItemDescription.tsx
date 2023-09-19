@@ -2,7 +2,7 @@ import { type ProductItem } from "@/models/Product";
 import { formatMoney } from "@/utils/formatMoney";
 
 interface ProductListItemDescriptionProps {
-	name: ProductItem["name"];
+	name: ProductItem["title"];
 	category: ProductItem["category"];
 	price: ProductItem["price"];
 }

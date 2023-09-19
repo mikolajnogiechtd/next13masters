@@ -1,32 +1,31 @@
 "use client";
 
 import React from "react";
-import { type Route } from "next";
 import { usePathname, useSearchParams } from "next/navigation";
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
 import classNames from "classnames";
 
-interface ActiveLinkProps {
-	href: Route;
+type ActiveLinkProps<Href> = {
 	children: React.ReactNode;
 	className?: string;
 	activeClassName?: string;
 	exact?: boolean;
-}
+} & LinkProps<Href>;
 
-export const ActiveLink = ({
+export const ActiveLink = <T extends string>({
 	href,
 	children,
 	className,
 	activeClassName = "",
 	exact = true,
 	...rest
-}: ActiveLinkProps) => {
+}: ActiveLinkProps<T>) => {
 	const pathname = usePathname();
 	const searchParams = useSearchParams().toString();
 	const fullPath = pathname + (searchParams ? "?" + searchParams : "");
 
-	const isActive = exact ? fullPath === href : fullPath.indexOf(href) !== -1;
+	// eslint-disable-next-line @typescript-eslint/no-base-to-string
+	const isActive = exact ? fullPath === href : fullPath.indexOf(href.toString()) !== -1;
 
 	return (
 		<Link

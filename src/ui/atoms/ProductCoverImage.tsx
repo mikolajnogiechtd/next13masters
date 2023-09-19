@@ -1,9 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { type ProductItem } from "@/models/Product";
 
 interface ProductCoverImageProps {
-	src: ProductItem["coverImage"]["src"];
-	alt: ProductItem["coverImage"]["alt"];
+	src: string;
+	alt: string;
 }
 
 export const ProductCoverImage = ({ src, alt }: ProductCoverImageProps) => {
