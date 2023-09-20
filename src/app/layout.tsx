@@ -1,7 +1,9 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ActiveLink } from "@/ui/atoms/ActiveLink";
+import classNames from "classnames";
+import { Header } from "@/ui/organisms/Header";
+import { Footer } from "@/ui/organisms/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,30 +14,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang="pl">
-			<body className={inter.className}>
-				<nav>
-					<ul className="mt-2 flex justify-center space-x-4">
-						<li>
-							<ActiveLink
-								href="/"
-								className="text-blue-400 hover:text-blue-600"
-								activeClassName="border-b-2 border-blue-400"
-							>
-								Home
-							</ActiveLink>
-						</li>
-						<li>
-							<ActiveLink
-								href={"/products/1"}
-								className="text-blue-400 hover:text-blue-600"
-								activeClassName="border-b-2 border-blue-400"
-							>
-								All
-							</ActiveLink>
-						</li>
-					</ul>
-				</nav>
-				{children}
+			<body className={classNames(inter.className, "flex min-h-screen flex-col")}>
+				<Header />
+				<main className="mx-auto mt-24 w-full max-w-7xl flex-1 text-left">{children}</main>
+				<Footer />
 			</body>
 		</html>
 	);

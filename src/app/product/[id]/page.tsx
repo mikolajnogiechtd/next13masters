@@ -1,6 +1,7 @@
 import { type Metadata } from "next";
 import { ProductsService } from "@/api/ProductsService";
 import { ProductCoverImage } from "@/ui/atoms/ProductCoverImage";
+import { formatMoney } from "@/utils/formatMoney";
 
 export async function generateMetadata({
 	params: { id },
@@ -27,10 +28,13 @@ export default async function ProductPage({
 	const product = response.data;
 
 	return (
-		<main className="mx-auto max-w-2xl">
+		<div className="mx-auto flex max-w-2xl flex-col gap-2">
 			<ProductCoverImage src={product.image} alt={product.title} />
-			<h1 className="mt-2 text-center text-lg font-bold">{product.title}</h1>
-			<p>{product.description}</p>
-		</main>
+			<div className="flex items-center justify-between">
+				<h1 className="mt-2 text-center text-lg font-bold ">{product.title}</h1>
+				<p className="font-bold">{formatMoney(product.price / 100)}</p>
+			</div>
+			<p className="text-gray-700">{product.description}</p>
+		</div>
 	);
 }

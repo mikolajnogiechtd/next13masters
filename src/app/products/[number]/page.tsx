@@ -8,9 +8,9 @@ export default async function ProductsPage({ params: { number } }: { params: { n
 	const response = await ProductsService.getProducts(Number.parseInt(number));
 
 	return (
-		<main>
+		<div>
 			<ProductList products={response.data} />
 			<Pagination totalPages={TOTAL_PAGES} />
-		</main>
+		</div>
 	);
 }
