@@ -1,0 +1,5 @@
+query ProductGetList($offset: Int!) {
+	products(skip: $offset, first: 5) {
+		...ProductListItem
+	}
+}

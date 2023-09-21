@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link, { type LinkProps } from "next/link";
 import classNames from "classnames";
 
@@ -21,11 +21,11 @@ export const ActiveLink = <T extends string>({
 	...rest
 }: ActiveLinkProps<T>) => {
 	const pathname = usePathname();
-	const searchParams = useSearchParams().toString();
-	const fullPath = pathname + (searchParams ? "?" + searchParams : "");
 
-	// eslint-disable-next-line @typescript-eslint/no-base-to-string
-	const isActive = exact ? fullPath === href : fullPath.indexOf(href.toString()) !== -1;
+	const isActive = exact
+		? pathname === href
+		: // eslint-disable-next-line @typescript-eslint/no-base-to-string
+		  pathname.split("/")[1]?.indexOf(href.toString().split("/")[1] || "") !== -1;
 
 	return (
 		<Link
@@ -34,6 +34,7 @@ export const ActiveLink = <T extends string>({
 			className={classNames(className, {
 				[activeClassName]: isActive,
 			})}
+			aria-current={isActive ? "page" : undefined}
 			{...rest}
 		>
 			{children}

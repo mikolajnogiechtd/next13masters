@@ -1,3 +1,10 @@
+import { Suspense } from "react";
+import { RelatedProductsList } from "@/ui/organisms/RelatedProductsList";
+
 export default function HomePage() {
-	return <div>Home Page</div>;
+	return (
+		<Suspense>
+			<RelatedProductsList />
+		</Suspense>
+	);
 }

@@ -1,10 +1,9 @@
-import { type ProductItem } from "@/models/Product";
 import { formatMoney } from "@/utils/formatMoney";
 
 interface ProductListItemDescriptionProps {
-	name: ProductItem["title"];
-	category: ProductItem["category"];
-	price: ProductItem["price"];
+	name: string;
+	category: string;
+	price: number;
 }
 
 export const ProductListItemDescription = ({

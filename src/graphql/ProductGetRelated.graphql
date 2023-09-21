@@ -1,0 +1,5 @@
+query ProductGetRelated {
+	products(first: 4, orderBy: price_DESC) {
+		...ProductListItem
+	}
+}
