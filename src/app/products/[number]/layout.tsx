@@ -1,7 +1,6 @@
 import React from "react";
 import { range } from "@/utils/range";
-
-const TOTAL_PAGES = 10;
+import { TOTAL_PAGES } from "@/utils/config";
 
 export async function generateStaticParams() {
 	return range(TOTAL_PAGES).map((page) => ({
